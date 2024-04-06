@@ -1,0 +1,4 @@
+docker
+django
+requests
+sqlalchemy
