@@ -1,4 +1,6 @@
 docker
 django
 requests
+numpy
 sqlalchemy
+black
