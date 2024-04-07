@@ -49,7 +49,7 @@ __so that__ I can help other users.
 
 - User Registration:
 
-![activity diagram](docs\images\Diagrama_de_actividades1.png)
+![activity diagram](docs/images/Diagrama_de_actividades1.png)
 
 - User Login
 - Posting Question
