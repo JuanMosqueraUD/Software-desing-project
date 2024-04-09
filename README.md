@@ -51,9 +51,22 @@ __so that__ I can help other users.
 
 ![activity diagram](docs/images/Diagrama_de_actividades1.png)
 
-- User Login
-- Posting Question
+- User Login:
+
+![activity diagram](docs/images/Diagrama_de_actividades2.png)
+ 
+- Posting Question:
+
+![activity diagram](docs/images/Diagrama_de_actividades3.png)
+  
 - Posting Answer
 - Voting Content
 - Searching Content
 - Moderating Content
+
+## Modeling diagrams
+
+### Deployment diagram
+
+![activity diagram](docs/images/deployment_diagram.png)
+
