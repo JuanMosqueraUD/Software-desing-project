@@ -60,9 +60,20 @@ __so that__ I can help other users.
 ![activity diagram](docs/images/Diagrama_de_actividades3.png)
   
 - Posting Answer
+
+![activity diagram](docs/images/Diagrama_de_actividades4.png)
+
 - Voting Content
+
+![activity diagram](docs/images/Diagrama_de_actividades5.png)
+
 - Searching Content
+
+![activity diagram](docs/images/Diagrama_de_actividades6.png)
+
 - Moderating Content
+
+![activity diagram](docs/images/Diagrama_de_actividades7.png)
 
 ## Modeling diagrams
 
