@@ -1,0 +1,6 @@
+docker
+django
+sqlalchemy
+black
+poetry
+pylint
