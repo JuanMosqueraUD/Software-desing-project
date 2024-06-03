@@ -1,6 +1,8 @@
 docker
 django
-requests
-numpy
 sqlalchemy
 black
+poetry
+pylint
+requests
+uvicorn
