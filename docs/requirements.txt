@@ -1,8 +1,0 @@
-docker
-django
-sqlalchemy
-black
-poetry
-pylint
-requests
-uvicorn
