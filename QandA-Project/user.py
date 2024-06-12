@@ -1,9 +1,11 @@
+"""This module contains classes for User, UserDecorator, AdminDecorator, and LoginSystem."""
+
 from typing import List
 import post as posting
 
 
-# Interface BaseUser
 class BaseUser:
+    """Base class for User"""
     def create_post(self):
         raise NotImplementedError
 
@@ -17,8 +19,8 @@ class BaseUser:
         raise NotImplementedError
 
 
-# Interface Login
 class Login:
+    """Interface for Login"""
     def login(self, email, password):
         raise NotImplementedError
 
@@ -26,8 +28,8 @@ class Login:
         raise NotImplementedError
 
 
-# Class User implementing BaseUser
 class User(BaseUser):
+    """Class representing a User"""
     def __init__(self, name: str, email: str, password: str):
         self.name = name
         self.email = email
@@ -81,8 +83,8 @@ class User(BaseUser):
             print("Invalid reply ID.")
 
 
-# Decorator class UserDecorator implementing BaseUser
 class UserDecorator(BaseUser):
+    """Decorator class for User"""
     def __init__(self, wrapped_user: BaseUser):
         self.wrapped_user = wrapped_user
 
@@ -99,8 +101,8 @@ class UserDecorator(BaseUser):
         self.wrapped_user.update_reply()
 
 
-# AdminDecorator extending UserDecorator
 class AdminDecorator(UserDecorator):
+    """Decorator class for Admin User"""
     def delete_post(self):
         if not self.wrapped_user.posts:
             print("No posts to delete.")
@@ -138,11 +140,10 @@ class AdminDecorator(UserDecorator):
         print("Forum deleted.")
 
 
-# Login System implementing Login
 class LoginSystem(Login):
+    """Class representing a Login System"""
     def __init__(self):
         self.users_list = []
-        # Crear usuario admin
         admin = User("admin", "admin@gmail.com", "admin")
         self.users_list.append(admin)
 
@@ -155,7 +156,6 @@ class LoginSystem(Login):
         return None
 
     def signUp(self, name, email, password):
-        # Evitar que el usuario 'admin' se registre de nuevo
         if name.lower() == "admin":
             print("Cannot sign up as admin.")
             return None
@@ -165,7 +165,6 @@ class LoginSystem(Login):
         return user
 
 
-# Main program loop
 if __name__ == "__main__":
     login_system = LoginSystem()
     forums = []

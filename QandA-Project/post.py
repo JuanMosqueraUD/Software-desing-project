@@ -1,4 +1,4 @@
-# Abstract Component class
+"""This module contains the classes for the Composite pattern. The classes are used to represent the forums, posts, and replies in the Q&A system."""
 class Component:
     """Component class for the Composite pattern. This class is the base"""
 
@@ -18,7 +18,6 @@ class Component:
         raise NotImplementedError
 
 
-# Concrete Forum class implementing Component
 class Forum(Component):
     """Concrete class implementing the Component interface for forums"""
 
@@ -48,7 +47,6 @@ class Forum(Component):
         return self.id
 
 
-# Concrete Post class implementing Component
 class Post(Component):
     """Concrete class implementing the Component interface for posts"""
 
@@ -79,7 +77,6 @@ class Post(Component):
         return self.id
 
 
-# Concrete Reply class implementing Component
 class Reply(Component):
     """Concrete class implementing the Component interface for replies"""
 
@@ -88,13 +85,13 @@ class Reply(Component):
         self.content = content
 
     def add(self, component):
-        pass  # Replies cannot contain other components
+        pass  
 
     def remove(self, component):
-        pass  # Replies cannot contain other components
+        pass  
 
     def getChild(self, index):
-        return None  # Replies do not have children
+        return None  
 
     def editContent(self):
         self.content = input(f"Reply {self.id}, enter new content: ")
