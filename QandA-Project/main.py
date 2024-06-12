@@ -1,13 +1,12 @@
 """ Module where web services are defined """
-from fastapi import FastAPI, HTTPException, Depends
-from pydantic import BaseModel, SecretStr
-from dotenv import load_dotenv
-from sqlalchemy import create_engine
+
+from typing import Annotated
+from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
-from database import engine, SessionLocal
+from database import engine
 import models
 from models import appDAO
-from typing import List, Annotated
+
 app = FastAPI(
     title="QuestPI",
     version="0.1",
@@ -18,8 +17,6 @@ app = FastAPI(
 models.Base.metadata.create_all(engine)
 
 
-
-
 def get_db():
     """Get a database session"""
     db = Session()
@@ -27,6 +24,7 @@ def get_db():
         yield db
     finally:
         db.close()
+
 
 db_dependency = Annotated[Session, Depends(get_db)]
 
@@ -37,18 +35,26 @@ def create_question(question: models.QuestionBase):
     appDAO.add_question(question)
     return {"message": "question created successfully"}
 
-@app.get("/user")
+
+@app.get("/user/get")
 def get_user():
-    pass
+    return {"message": "user retrieved successfully"}
 
 
-
-@app.get("/questions/{question_id}")
+@app.get("/questions/get")
 def get_question():
     """Get a question by its id"""
-    pass
+    return {"message": "question retrieved successfully"}
+
 
 @app.post("/answers/")
 def create_answer():
     """Create an answer into the database"""
-    pass
+    return {"message": "answer created successfully"}
+
+
+@app.post("/users/create")
+def create_user(user: models.UserBase):
+    """Create an user into the database"""
+    appDAO.add_user(user)
+    return {"message": "user created successfully"}
