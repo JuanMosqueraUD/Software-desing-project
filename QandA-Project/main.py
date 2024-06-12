@@ -6,35 +6,18 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from database import engine, SessionLocal
 import models
+from models import appDAO
 from typing import List, Annotated
 app = FastAPI(
-    title="Questions and answers API",
+    title="QuestPI",
     version="0.1",
     description="API used for conection and storage of a question and answers forum.",
 )
 
-@app.get("/user")
-def get_user():
-    pass
 
 models.Base.metadata.create_all(engine)
-class User(BaseModel):
-    """Model for the user object"""
-    username: str
-    password: SecretStr
-    is_admin: bool
 
-class QuestionBase(BaseModel):
-    """Model for the question object"""
-    title: str
-    body: str
-    user_id: int
 
-class AnswerBase(BaseModel):
-    """Model for the answer object"""
-    body: str
-    user_id: int
-    question_id: int
 
 
 def get_db():
@@ -46,3 +29,26 @@ def get_db():
         db.close()
 
 db_dependency = Annotated[Session, Depends(get_db)]
+
+
+@app.post("/questions/create")
+def create_question(question: models.QuestionBase):
+    """Create a question into the database"""
+    appDAO.add_question(question)
+    return {"message": "question created successfully"}
+
+@app.get("/user")
+def get_user():
+    pass
+
+
+
+@app.get("/questions/{question_id}")
+def get_question():
+    """Get a question by its id"""
+    pass
+
+@app.post("/answers/")
+def create_answer():
+    """Create an answer into the database"""
+    pass

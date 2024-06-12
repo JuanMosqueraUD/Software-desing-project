@@ -13,7 +13,7 @@ DATABASE_CONNECTION = 'postgresql://postgres:postgres@localhost:5432/modelosbase
 engine = create_engine(DATABASE_CONNECTION)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush= False,bind=engine)
-
+Session=SessionLocal()
 Base = declarative_base()
 
 
